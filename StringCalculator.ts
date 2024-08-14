@@ -24,8 +24,10 @@ export class StringCalculator {
                 const n = parseInt(num, 10);
                 if (n < 0) {
                     negatives.push(n);
+                } else if (n <= 1000) {
+                    // Ignore numbers greater than 1000
+                    sum += n;
                 }
-                sum += n;
             }
         }
 

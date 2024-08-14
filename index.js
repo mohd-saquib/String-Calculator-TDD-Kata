@@ -2,15 +2,17 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const StringCalculator_1 = require("./StringCalculator");
 const calculator = new StringCalculator_1.StringCalculator();
-// Initial count should be 0
-console.log("Count => ", calculator.getCalledCount()); // Output: 0
-console.log(calculator.add("")); // Output: 0
-console.log(calculator.add("1")); // Output: 1
-// Count should now be 2
-console.log("Count => ", calculator.getCalledCount()); // Output: 2
-console.log(calculator.add("1,5")); // Output: 6
-console.log(calculator.add("1\n2,3")); // Output: 6
-console.log(calculator.add("//;\n1;2")); // Output: 3
+// Log initial count
+console.log("Initial Count =>", calculator.getCalledCount()); // Output: Initial Count => 0
+// Test cases
+console.log(calculator.add("2,1001")); // Output: 2 (1001 is ignored)
+console.log("Count after add() =>", calculator.getCalledCount()); // Output: Count after add() => 1
+console.log(calculator.add("1000,2000")); // Output: 1000 (2000 is ignored)
+console.log("Count after add() =>", calculator.getCalledCount()); // Output: Count after add() => 2
+console.log(calculator.add("1\n2,1000")); // Output: 1003 (1000 is not ignored)
+console.log("Count after add() =>", calculator.getCalledCount()); // Output: Count after add() => 3
+console.log(calculator.add("//;\n1;2;1001")); // Output: 3 (1001 is ignored)
+console.log("Count after add() =>", calculator.getCalledCount()); // Output: Count after add() => 4
 // Count should now be 5
 console.log("Count => ", calculator.getCalledCount()); // Output: 5
 try {

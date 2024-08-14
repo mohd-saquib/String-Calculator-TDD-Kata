@@ -25,7 +25,10 @@ class StringCalculator {
                 if (n < 0) {
                     negatives.push(n);
                 }
-                sum += n;
+                else if (n <= 1000) {
+                    // Ignore numbers greater than 1000
+                    sum += n;
+                }
             }
         }
         if (negatives.length > 0) {
