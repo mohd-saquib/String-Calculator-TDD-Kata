@@ -33,7 +33,7 @@ This is a simple String Calculator implemented in Node.js using TypeScript. The 
 4. **Run the calculator**:
 
     ```bash
-    node dist/index.js
+    node index.js
     ```
 
 ## Usage
