@@ -10,7 +10,7 @@ class StringCalculator {
         if (numbers === "") {
             return 0;
         }
-        let delimiter = /,|\n/;
+        let delimiter = /,|\n/; // Default delimiters: comma and newline
         if (numbers.startsWith("//")) {
             const delimiterEndIndex = numbers.indexOf("\n");
             const delimiterPart = numbers.slice(2, delimiterEndIndex);
@@ -19,7 +19,7 @@ class StringCalculator {
                     .slice(1, -1)
                     .split("][")
                     .map((d) => this.escapeDelimiter(d));
-                delimiter = new RegExp(delimiters.join("|"));
+                delimiter = new RegExp(delimiters.join("|")); // Combine multiple delimiters using OR
             }
             else {
                 delimiter = new RegExp(this.escapeDelimiter(delimiterPart));

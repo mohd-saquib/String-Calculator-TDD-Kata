@@ -26,6 +26,11 @@ console.log("Result for '//[*][%]\\n1*2%3':", calculator.add("//[*][%]\n1*2%3"))
 console.log("Result for '//[***][%%%]\\n1***2%%%3':", calculator.add("//[***][%%%]\n1***2%%%3")); // Output: 6
 console.log("Result for '//[;][&]\\n1;2&3':", calculator.add("//[;][&]\n1;2&3")); // Output: 6
 console.log("Result for '//[***][%%%]\\n1***2%%%3***1001%%%4':", calculator.add("//[***][%%%]\n1***2%%%3***1001%%%4")); // Output: 10 (1001 is ignored)
+// Test cases with multiple delimiters, including longer than one character
+console.log("Result for '//[**][%%]\\n1**2%%3':", calculator.add("//[**][%%]\n1**2%%3")); // Output: 6
+console.log("Result for '//[***][%%%]\\n1***2%%%3':", calculator.add("//[***][%%%]\n1***2%%%3")); // Output: 6
+console.log("Result for '//[;][&&]\\n1;2&&3':", calculator.add("//[;][&&]\n1;2&&3")); // Output: 6
+console.log("Result for '//[***][%%%]\\n1***2%%%3***1001%%%4':", calculator.add("//[***][%%%]\n1***2%%%3***1001%%%4")); // Output: 10 (1001 is ignored)
 try {
     console.log(calculator.add("1,-2,3")); // Should raise an exception
 }
