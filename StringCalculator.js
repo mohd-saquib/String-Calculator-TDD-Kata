@@ -14,8 +14,16 @@ class StringCalculator {
         if (numbers.startsWith("//")) {
             const delimiterEndIndex = numbers.indexOf("\n");
             const delimiterPart = numbers.slice(2, delimiterEndIndex);
-            // Handle custom delimiters of any length
-            delimiter = new RegExp(this.escapeDelimiter(delimiterPart));
+            if (delimiterPart.startsWith("[") && delimiterPart.endsWith("]")) {
+                const delimiters = delimiterPart
+                    .slice(1, -1)
+                    .split("][")
+                    .map((d) => this.escapeDelimiter(d));
+                delimiter = new RegExp(delimiters.join("|"));
+            }
+            else {
+                delimiter = new RegExp(this.escapeDelimiter(delimiterPart));
+            }
             numbers = numbers.slice(delimiterEndIndex + 1);
         }
         const numberList = numbers.split(delimiter);

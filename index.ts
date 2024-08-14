@@ -32,6 +32,27 @@ console.log(calculator.add("//***\n1***2***3***1001")); // Output: 6 (1001 is ig
 
 console.log(calculator.add("//||\n1||2||3")); // Output: 6 (delimiter is ||)
 
+// Test cases with multiple delimiters
+console.log(
+    "Result for '//[*][%]\\n1*2%3':",
+    calculator.add("//[*][%]\n1*2%3")
+); // Output: 6
+
+console.log(
+    "Result for '//[***][%%%]\\n1***2%%%3':",
+    calculator.add("//[***][%%%]\n1***2%%%3")
+); // Output: 6
+
+console.log(
+    "Result for '//[;][&]\\n1;2&3':",
+    calculator.add("//[;][&]\n1;2&3")
+); // Output: 6
+
+console.log(
+    "Result for '//[***][%%%]\\n1***2%%%3***1001%%%4':",
+    calculator.add("//[***][%%%]\n1***2%%%3***1001%%%4")
+); // Output: 10 (1001 is ignored)
+
 try {
     console.log(calculator.add("1,-2,3")); // Should raise an exception
 } catch (e: unknown) {
