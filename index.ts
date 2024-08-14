@@ -21,6 +21,17 @@ console.log("Count after add() =>", calculator.getCalledCount()); // Output: Cou
 // Count should now be 4
 console.log("Count => ", calculator.getCalledCount()); // Output: 4
 
+// Test custom delimiters of various lengths
+console.log("custom delimiters => ", calculator.add("//***\n1***2***3")); // Output: 6 (delimiter is ***)
+
+console.log(calculator.add("//;;;\n1;;;2;;;3")); // Output: 6 (delimiter is ;;;)
+
+console.log(calculator.add("//---\n1---2---3")); // Output: 6 (delimiter is ---)
+
+console.log(calculator.add("//***\n1***2***3***1001")); // Output: 6 (1001 is ignored)
+
+console.log(calculator.add("//||\n1||2||3")); // Output: 6 (delimiter is ||)
+
 try {
     console.log(calculator.add("1,-2,3")); // Should raise an exception
 } catch (e: unknown) {

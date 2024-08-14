@@ -13,7 +13,9 @@ class StringCalculator {
         let delimiter = /,|\n/;
         if (numbers.startsWith("//")) {
             const delimiterEndIndex = numbers.indexOf("\n");
-            delimiter = new RegExp(numbers.slice(2, delimiterEndIndex));
+            const delimiterPart = numbers.slice(2, delimiterEndIndex);
+            // Handle custom delimiters of any length
+            delimiter = new RegExp(this.escapeDelimiter(delimiterPart));
             numbers = numbers.slice(delimiterEndIndex + 1);
         }
         const numberList = numbers.split(delimiter);
@@ -35,6 +37,10 @@ class StringCalculator {
             throw new Error(`Negative numbers not allowed: ${negatives.join(", ")}`);
         }
         return sum;
+    }
+    escapeDelimiter(delimiter) {
+        // Escape special characters in the delimiter to be used in a regular expression
+        return delimiter.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     }
     getCalledCount() {
         return this.callCount;

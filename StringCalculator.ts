@@ -11,7 +11,9 @@ export class StringCalculator {
         let delimiter = /,|\n/;
         if (numbers.startsWith("//")) {
             const delimiterEndIndex = numbers.indexOf("\n");
-            delimiter = new RegExp(numbers.slice(2, delimiterEndIndex));
+            const delimiterPart = numbers.slice(2, delimiterEndIndex);
+            // Handle custom delimiters of any length
+            delimiter = new RegExp(this.escapeDelimiter(delimiterPart));
             numbers = numbers.slice(delimiterEndIndex + 1);
         }
 
@@ -38,6 +40,11 @@ export class StringCalculator {
         }
 
         return sum;
+    }
+
+    private escapeDelimiter(delimiter: string): string {
+        // Escape special characters in the delimiter to be used in a regular expression
+        return delimiter.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     }
 
     public getCalledCount(): number {
