@@ -2,7 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.StringCalculator = void 0;
 class StringCalculator {
+    constructor() {
+        this.callCount = 0;
+    }
     add(numbers) {
+        this.callCount++; // Increment the count each time add() is called
         if (numbers === "") {
             return 0;
         }
@@ -28,6 +32,9 @@ class StringCalculator {
             throw new Error(`Negative numbers not allowed: ${negatives.join(", ")}`);
         }
         return sum;
+    }
+    getCalledCount() {
+        return this.callCount;
     }
 }
 exports.StringCalculator = StringCalculator;
